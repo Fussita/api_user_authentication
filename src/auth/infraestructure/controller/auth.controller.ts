@@ -1,26 +1,14 @@
 import { Body, Controller, Get, Inject, Ip, Post, UseGuards } from "@nestjs/common";
+import { JwtService } from "@nestjs/jwt";
 import { Mongoose } from "mongoose";
-import { IEncryptor } from "src/_core/application/encryptor/encryptor.interface";
-import { BcryptEncryptor } from "src/_core/infraestructure/encryptor/bcrypt-encryptor";
-import { JWTAuthGuard } from "src/_core/infraestructure/jwt/decorator/jwt-auth.guard";
-import { IAccountRepository } from "src/account/application/repository-interface/account-repository.interface";
-import { ISessionRepository } from "src/account/application/repository-interface/session-repository.interface";
-import { OdmAccountRepository } from "src/account/infraestructure/repository/odm-repository/odm-repository-account";
-import { OdmSessionRepository } from "src/account/infraestructure/repository/odm-repository/odm-repository-session";
+import { BcryptEncryptor, ErrorParseDecorator, GetSession, IDateHandler, IdGenerator, IEncryptor, IJWTGenerator, JWTAuthGuard, JWTGenerator, MomentDateHandler, UUIDGenerator } from 'src/_core'
+import { IAccountRepository, ISessionRepository, SessionModel } from "src/account/application";
+import { OdmSessionRepository, OdmAccountRepository } from "src/account/infraestructure";
 import { SignInService } from "src/auth/application/service/sign-in/sign-in-service.application";
 import { SignUpService } from "src/auth/application/service/sign-up/sign-up-service.application";
 import { SignInEntryController } from "./dto/sign-in/sign-in-entry-dto";
 import { SignUpEntryController } from "./dto/sign-up/sign-up-entry-dto";
-import { GetSession } from "src/_core/infraestructure/jwt/decorator/get-session.param.decorator";
-import { SessionModel } from "src/account/application/entity-model/session-model.interface";
-import { IdGenerator } from "src/_core/application/id-generator/id-generator.interface";
-import { UuidGenerator } from "src/_core/infraestructure/id-generator/uuid-generator";
-import { JwtGenerator } from "src/_core/infraestructure/jwt/jwt-generator";
-import { IJwtGenerator } from "src/_core/application/jwt-generator/jwt-generator.interface";
-import { JwtService } from "@nestjs/jwt";
-import { IDateHandler } from "src/_core/application/date-handler/date-handler.interface";
-import { ErrorParseDecorator } from "src/_core/application/decorator/error-parse-decorator/error-parse-decorator";
-import { MomentDateHandler } from "src/_core/infraestructure/date-handler/moment-date-handler";
+
 
 @Controller('auth')
 export class AuthController {
@@ -29,7 +17,7 @@ export class AuthController {
     private readonly sessionRepo: ISessionRepository
     private readonly encryptor: IEncryptor
     private readonly idGen: IdGenerator
-    private readonly jwtGen: IJwtGenerator
+    private readonly jwtGen: IJWTGenerator
     private readonly dateHandler: IDateHandler
 
     constructor(
@@ -39,8 +27,8 @@ export class AuthController {
         this.sessionRepo = new OdmSessionRepository(mongo)
         this.accountRepo = new OdmAccountRepository(mongo)
         this.encryptor = new BcryptEncryptor()
-        this.idGen = new UuidGenerator()
-        this.jwtGen = new JwtGenerator( jwtService )
+        this.idGen = new UUIDGenerator()
+        this.jwtGen = new JWTGenerator( jwtService )
         this.dateHandler = new MomentDateHandler()
     }
     

@@ -1,8 +1,7 @@
-import { Result } from "src/_core/utils/result-handler/Result";
-import { AccountModel } from "src/account/application/entity-model/account-model.interface";
-import { IAccountRepository } from "src/account/application/repository-interface/account-repository.interface";
-import { OdmAccount, OdmAccountSchema } from "../../entity/odm-account.entity";
+import { Result } from "src/_core";
 import { Model, Mongoose } from "mongoose";
+import { OdmAccount, OdmAccountSchema } from "../..";
+import { AccountModel, IAccountRepository } from "src/account/application";
 
 export class OdmAccountRepository implements IAccountRepository {
     

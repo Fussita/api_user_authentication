@@ -1,7 +1,6 @@
-import { Result } from "../../../utils/result-handler/Result"
-import { IService } from "../service.interface"
+import { IService, Result } from "src/_core"
 
-export abstract class ServiceDecorator<D, R> implements IService<D, R> {
+export abstract class IServiceDecorator<D, R> implements IService<D, R> {
     protected service: IService<D, R>
     
     constructor ( service: IService<D, R> ) {

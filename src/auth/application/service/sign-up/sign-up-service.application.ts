@@ -1,11 +1,8 @@
-import { IEncryptor } from "src/_core/application/encryptor/encryptor.interface";
-import { IService } from "src/_core/application/service/service.interface";
-import { Result } from "src/_core/utils/result-handler/Result";
-import { IAccountRepository } from "src/account/application/repository-interface/account-repository.interface";
-import { SignUpEntry } from "./dto/sign-up-entry-dto";
-import { SignUpResponse } from "./dto/sign-up-response-dto";
-import { IdGenerator } from "src/_core/application/id-generator/id-generator.interface";
-import { EmailRegisteredException } from "../../exception/email-registered-exception";
+import { IdGenerator, IEncryptor, IService, Result } from 'src/_core'
+import { IAccountRepository } from 'src/account/application'
+import { EmailRegisteredException } from '../../exception'
+import { SignUpEntry } from './dto/sign-up-entry-dto'
+import { SignUpResponse } from './dto/sign-up-response-dto'
 
 export class SignUpService implements IService<SignUpEntry, SignUpResponse> {
 

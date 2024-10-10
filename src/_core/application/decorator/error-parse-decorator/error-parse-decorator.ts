@@ -1,9 +1,7 @@
-import { Result } from "src/_core/utils/result-handler/Result"
-import { ServiceDecorator } from "../../service/decorator/application-service-decorator.decorator"
-import { IService } from "../../service/service.interface"
-import { ExceptionMapper } from "src/_core/infraestructure/exception-mapper/exception-mapper"
+import { Result, IService, ExceptionMapper } from "src/_core"
+import { IServiceDecorator } from '../../service'
 
-export class ErrorParseDecorator<L, R> extends ServiceDecorator<L, R>{
+export class ErrorParseDecorator<L, R> extends IServiceDecorator<L, R>{
     constructor ( 
         service: IService<L, R>
     ) {

@@ -1,7 +1,5 @@
 import { HttpException, HttpStatus } from "@nestjs/common";
-import { EmailNotRegisteredException } from "src/auth/application/exception/email-not-registered-exception";
-import { EmailRegisteredException } from "src/auth/application/exception/email-registered-exception";
-import { IncorrectPasswordException } from "src/auth/application/exception/incorrect-password-registered-exception";
+import { EmailNotRegisteredException, EmailRegisteredException, IncorrectPasswordException } from "src/auth/application/exception";
 
 export class ExceptionMapper {
   

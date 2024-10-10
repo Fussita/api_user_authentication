@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Inject, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { JwtPayload } from "./dto/jwt-payload.interface";
+import { JWTPayload } from "./dto/jwt-payload.interface";
 import { ISessionRepository } from "src/account/application/repository-interface/session-repository.interface";
 import { Mongoose } from "mongoose";
 import { SessionModel } from "src/account/application/entity-model/session-model.interface";
@@ -33,7 +33,7 @@ export class JWTAuthGuard implements CanActivate {
         return true
     }
     
-    private async validate(payload: JwtPayload) {
+    private async validate(payload: JWTPayload) {
         const session: Result<SessionModel> = await this.sessionRepository.findById( payload.id ); 
         if ( !session.isSuccess() ) throw new Error('Error buscando la sesion del usuario a traves del token')
         return session.Value;

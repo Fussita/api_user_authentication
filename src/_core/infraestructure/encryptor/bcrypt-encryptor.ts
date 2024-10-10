@@ -1,4 +1,4 @@
-import { IEncryptor } from 'src/_core/application/encryptor/encryptor.interface'
+import { IEncryptor } from 'src/_core'
 import * as bcrypt from 'bcrypt'
 
 export class BcryptEncryptor implements IEncryptor {

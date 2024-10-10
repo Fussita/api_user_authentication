@@ -1,7 +1,7 @@
-import { IdGenerator } from "src/_core/application/id-generator/id-generator.interface";
+import { IdGenerator } from "src/_core";
 import { v4 } from "uuid";
 
-export class UuidGenerator implements IdGenerator {
+export class UUIDGenerator implements IdGenerator {
     
     generate(): string {
         return v4()

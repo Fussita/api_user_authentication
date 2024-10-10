@@ -1,4 +1,4 @@
 
-export interface IJwtGenerator {
+export interface IJWTGenerator {
     generateJwt (param: string): string
 }

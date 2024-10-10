@@ -1,7 +1,7 @@
 import { JwtService } from "@nestjs/jwt";
-import { IJwtGenerator } from "src/_core/application/jwt-generator/jwt-generator.interface";
+import { IJWTGenerator } from "src/_core";
 
-export class JwtGenerator implements IJwtGenerator {
+export class JWTGenerator implements IJWTGenerator {
     constructor(
         private readonly jwtService: JwtService
     ) {}

@@ -1,4 +1,4 @@
-import { IDateHandler } from "src/_core/application/date-handler/date-handler.interface";
+import { IDateHandler } from "src/_core";
 var moment = require('moment')
 
 export class MomentDateHandler implements IDateHandler {
