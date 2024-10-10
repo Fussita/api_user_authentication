@@ -8,6 +8,7 @@ interface EnvironmentVariables {
     DB_USERNAME: string;
     DB_PASSWORD: string;
     DB_NAME: string;
+    JWT_SECRET_KEY: string;
 }
 
 const envsSchema = joi.object({
@@ -17,9 +18,10 @@ const envsSchema = joi.object({
     DB_USERNAME: joi.string().required(),
     DB_PASSWORD: joi.string().required(),
     DB_NAME: joi.string().required(),
+    JWT_SECRET_KEY: joi.string().required(),
 }).unknown(true);
 
-const {error, value} = envsSchema.validate(process.env);
+const { error, value } = envsSchema.validate(process.env);
 
 if (error) throw new Error(`Config validation error: ${error.message}`)
 
@@ -32,4 +34,5 @@ export const envs = {
     dbUsername: envVars.DB_USERNAME,
     dbPassword: envVars.DB_PASSWORD,
     dbName: envVars.DB_NAME,
+    JWT_SECRET_KEY: envVars.JWT_SECRET_KEY,
 }
