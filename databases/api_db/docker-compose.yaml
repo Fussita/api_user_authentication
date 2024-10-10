@@ -1,0 +1,16 @@
+version: '4'
+
+services:
+  mongo:
+    image: mongo:5
+    restart: always
+    ports:
+      - "${DB_PORT}:27017"
+    environment:
+      MONGODB_DATABASE: ${DB_NAME}
+      #MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      #MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    container_name: db_nosql
+    hostname: ${DB_HOST}
+    volumes:
+      - ../mongodb:/var/lib/mongodb/data
