@@ -1,8 +1,8 @@
 import { IdGenerator, IEncryptor, IService, Result } from 'src/_core'
-import { IAccountRepository } from 'src/account/application'
 import { EmailRegisteredException } from '../../exception'
 import { SignUpEntry } from './dto/sign-up-entry-dto'
 import { SignUpResponse } from './dto/sign-up-response-dto'
+import { IAccountRepository } from 'src/account/application/repository-interface/account-repository.interface'
 
 export class SignUpService implements IService<SignUpEntry, SignUpResponse> {
 

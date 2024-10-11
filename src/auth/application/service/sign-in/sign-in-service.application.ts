@@ -1,8 +1,9 @@
 import { IDateHandler, IdGenerator, IEncryptor, IJWTGenerator, IService, Result } from 'src/_core'
-import { IAccountRepository, ISessionRepository } from 'src/account/application'
 import { EmailNotRegisteredException, IncorrectPasswordException } from '../../exception'
 import { SignInEntry } from './dto/sign-in-entry-dto'
 import { SignInResponse } from './dto/sign-in-response-dto'
+import { IAccountRepository } from 'src/account/application/repository-interface/account-repository.interface'
+import { ISessionRepository } from 'src/account/application/repository-interface/session-repository.interface'
 
 export class SignInService implements IService<SignInEntry, SignInResponse> {
 

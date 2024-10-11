@@ -2,12 +2,15 @@ import { Body, Controller, Get, Inject, Ip, Post, UseGuards } from "@nestjs/comm
 import { JwtService } from "@nestjs/jwt";
 import { Mongoose } from "mongoose";
 import { BcryptEncryptor, ErrorParseDecorator, GetSession, IDateHandler, IdGenerator, IEncryptor, IJWTGenerator, JWTAuthGuard, JWTGenerator, MomentDateHandler, UUIDGenerator } from 'src/_core'
-import { IAccountRepository, ISessionRepository, SessionModel } from "src/account/application";
-import { OdmSessionRepository, OdmAccountRepository } from "src/account/infraestructure";
 import { SignInService } from "src/auth/application/service/sign-in/sign-in-service.application";
 import { SignUpService } from "src/auth/application/service/sign-up/sign-up-service.application";
 import { SignInEntryController } from "./dto/sign-in/sign-in-entry-dto";
 import { SignUpEntryController } from "./dto/sign-up/sign-up-entry-dto";
+import { SessionModel } from "src/account/application/entity-model/session-model.interface";
+import { IAccountRepository } from "src/account/application/repository-interface/account-repository.interface";
+import { ISessionRepository } from "src/account/application/repository-interface/session-repository.interface";
+import { OdmAccountRepository } from "src/account/infraestructure/repository/odm-repository/odm-repository-account";
+import { OdmSessionRepository } from "src/account/infraestructure/repository/odm-repository/odm-repository-session";
 
 
 @Controller('auth')
