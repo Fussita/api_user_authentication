@@ -1,7 +1,8 @@
 import { Model, Mongoose } from "mongoose";
 import { Result } from "src/_core";
-import { ISessionRepository, SessionModel } from "src/account/application";
-import { OdmSession, OdmSessionSchema } from "../../entity";
+import { SessionModel } from "src/account/application/entity-model/session-model.interface";
+import { ISessionRepository } from "src/account/application/repository-interface/session-repository.interface";
+import { OdmSession, OdmSessionSchema } from "../../entity/odm-session.entity";
 
 export class OdmSessionRepository implements ISessionRepository {
     

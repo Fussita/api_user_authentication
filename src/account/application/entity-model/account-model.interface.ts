@@ -1,4 +1,4 @@
-import { SessionModel } from ".."
+import { SessionModel } from "./session-model.interface"
 
 export interface AccountModel {
     id: string

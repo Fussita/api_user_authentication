@@ -1,5 +1,5 @@
 import { Result } from "src/_core"
-import { SessionModel } from ".."
+import { SessionModel } from "../entity-model/session-model.interface"
 
 export interface ISessionRepository {
   saveSession(entry: SessionModel): Promise<Result<SessionModel>>
