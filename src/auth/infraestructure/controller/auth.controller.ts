@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Inject, Ip, Post, UseGuards } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Mongoose } from "mongoose";
-import { BcryptEncryptor, ErrorParseDecorator, GetSession, IDateHandler, IdGenerator, IEncryptor, IJWTGenerator, JWTAuthGuard, JWTGenerator, MomentDateHandler, UUIDGenerator } from 'src/_core'
+import { BcryptEncryptor, ErrorParseDecorator, IDateHandler, IdGenerator, IEncryptor, IJWTGenerator, MomentDateHandler, UUIDGenerator } from 'src/_core'
 import { SignInService } from "src/auth/application/service/sign-in/sign-in-service.application";
 import { SignUpService } from "src/auth/application/service/sign-up/sign-up-service.application";
 import { SignInEntryController } from "./dto/sign-in/sign-in-entry-dto";
@@ -11,7 +11,9 @@ import { IAccountRepository } from "src/account/application/repository-interface
 import { ISessionRepository } from "src/account/application/repository-interface/session-repository.interface";
 import { OdmAccountRepository } from "src/account/infraestructure/repository/odm-repository/odm-repository-account";
 import { OdmSessionRepository } from "src/account/infraestructure/repository/odm-repository/odm-repository-session";
-
+import { JWTGenerator } from "src/_core/infraestructure/jwt-generator";
+import { GetSession } from "../jwt/decorator/get-session.param.decorator";
+import { JWTAuthGuard } from "../jwt/guard/jwt-auth.guard";
 
 @Controller('auth')
 export class AuthController {

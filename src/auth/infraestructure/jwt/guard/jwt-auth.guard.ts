@@ -1,12 +1,12 @@
 import { CanActivate, ExecutionContext, Inject, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { JWTPayload } from "./dto/jwt-payload.interface";
 import { ISessionRepository } from "src/account/application/repository-interface/session-repository.interface";
 import { Mongoose } from "mongoose";
 import { SessionModel } from "src/account/application/entity-model/session-model.interface";
 import { Result } from "src/_core/utils/result-handler/Result";
 import { OdmSessionRepository } from "src/account/infraestructure/repository/odm-repository/odm-repository-session";
 import { envs } from "src/_config/env";
+import { JWTPayload } from "../decorator/dto/jwt-payload.interface";
 
 @Injectable()
 export class JWTAuthGuard implements CanActivate {
